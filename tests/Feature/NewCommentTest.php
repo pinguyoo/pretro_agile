@@ -19,10 +19,10 @@ class NewCommentTest extends TestCase
 
     public function testSubmitSuccess()
     {
-      $this->visit('/new-comment')
-         ->select('Good', 'commentType')
-         ->type('I think the planning poker is good way for sprint meeting ...', 'content')
-         ->press('Submit')
-         ->seePageIs('/dashboard');
+        $this->visit('/new-comment')
+             ->select('Good', 'commentType')
+             ->type('I think the planning poker is good way for sprint meeting ...', 'content')
+             ->press('Submit')
+             ->seePageIs('/dashboard');
     }
 }
