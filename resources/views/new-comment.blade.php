@@ -14,9 +14,9 @@
             </tr>
         </thead>
         <tbody>
-          @foreach ($data as $info)
+          @foreach ($data as $key=>$info)
           <tr>
-            <th scope="row">{{ $info->id }}</th>
+            <th scope="row">{{ $key+1 }}</th>
             <td>{{ $info->type}}</td>
             <td>{{ $info->content}}</td>
             <td>{{ $info->created_at}}</td>
@@ -28,8 +28,6 @@
   </div>
 
 @endif
-
-  {{ $data }}
 
   <div class="col">
     <form class="" action="/new-comment" method="POST">
