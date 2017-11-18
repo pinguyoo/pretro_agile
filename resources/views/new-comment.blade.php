@@ -10,7 +10,8 @@
             <th scope="col">#</th>
             <th scope="col">Type</th>
             <th scope="col">Content</th>
-            <th scope="col">created_at</th>
+            <th scope="col">Created_at</th>
+            <th scope="col">Remove</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,13 @@
             <td>{{ $info->type}}</td>
             <td>{{ $info->content}}</td>
             <td>{{ $info->created_at}}</td>
+            <td>
+              <form class="" action="/new-comment/{{ $info->id }}" method="post">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <Button type="submit" name="remove" class="btn btn-danger">Remove</Button>
+              </form>
+            </td>
           </tr>
           @endforeach
 
@@ -30,7 +38,7 @@
 @endif
 
   <div class="col">
-    <form class="" action="/new-comment" method="POST">
+    <form class="" action="/new-comment" method="post">
       {{ csrf_field() }}
       <div class="form-group">
         <label for="itemType">Types</label>

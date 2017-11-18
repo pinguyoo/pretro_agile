@@ -19,3 +19,4 @@ Route::get('/room', 'RoomController@index');
 
 Route::get('/new-comment', 'NewCommentController@index');
 Route::post('/new-comment', 'NewCommentController@newComment');
+Route::delete('/new-comment/{id}', 'NewCommentController@delete');
