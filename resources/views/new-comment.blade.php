@@ -44,8 +44,8 @@
         <label for="itemType">Types</label>
         <select class="form-control" name="commentType" required>
           <option value="" disabled selected>Choose the types</option>
-          <option>Good</option>
-          <option>Bad</option>
+          <option value="Good">Good</option>
+          <option value="Bad">Bad</option>
         </select>
       </div>
       <div class="form-group">
