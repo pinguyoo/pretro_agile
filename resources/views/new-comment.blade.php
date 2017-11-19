@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 
-@if (count($data))
+@if (count($comment))
 
   <div class="col">
     <table class="table">
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-          @foreach ($data as $key=>$info)
+          @foreach ($comment as $key=>$info)
           <tr>
             <th scope="row">{{ $key+1 }}</th>
             <td>{{ $info->type}}</td>

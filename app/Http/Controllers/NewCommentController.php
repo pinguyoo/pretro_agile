@@ -2,40 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class NewCommentController extends Controller
 {
     public function index() {
 
-      $data = DB::table('comment')->get();
+      $comment = Comment::all();
 
-      return view('new-comment', ['data' => $data]);
+      return view('/new-comment', ['comment' => $comment]);
     }
 
     public function newComment(Request $request) {
 
-      $commentType = $request->input('commentType');
-      $commentContent = $request->input('commentContent');
-      $token = $request->input('_token');
+      // $comment_model = new Comment();
+      // $comment_model->saveComment($request);
 
-      DB::table('comment')->insert(
-        ['user_id' => '1',
-         'type' => $commentType,
-         'content' => $commentContent,
-         'remember_token' => $token,
-         'created_at' => date('Y-m-d H:i:s'),
-         'updated_at' => date('Y-m-d H:i:s')
-       ]);
+      date_default_timezone_set("Asia/Taipei");
 
-      return redirect('new-comment');
+      $comment = new Comment;
+      $comment->user_id = 1;
+      $comment->type = $request->input('commentType');
+      $comment->content = $request->input('commentContent');
+      $comment->remember_token = $request->input('_token');
+      $comment->created_at = date('Y-m-d H:i:s');
+      $comment->updated_at = date('Y-m-d H:i:s');
+
+      if ($comment->save()) {
+        return redirect('/new-comment');
+      }
+
     }
 
     public function delete($id) {
 
-      DB::table('comment')->where('id', $id)->delete();
+      $deleteComment = Comment::where('id', $id)->delete();
 
-      return redirect('new-comment');
+      if ($deleteComment) {
+        return redirect('/new-comment');
+      }
     }
 }
