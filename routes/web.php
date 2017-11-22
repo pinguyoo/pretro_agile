@@ -11,8 +11,33 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/room', 'RoomController@index');
+/**
+ * Login
+ */
+
+Route::Auth();
+
+
+/**
+ * Room group - include show, create, store, join, destroy,
+ */
+
+Route::group(['prefix' => 'rooms', 'namespace' => 'Room', 'middleware' => 'auth'], function() {
+    Route::get('/', 'MainController@index');
+    Route::get('/join', 'MainController@ask');
+    Route::post('/join', 'MainController@join');
+    Route::resource('room', 'RoomController');
+});
+ 
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * Message Conntent
+ */
+Route::get('/messages', 'MessageController@index');
+Route::post('/message', 'MessageController@store');
+Route::delete('/message/{message}', 'MessageController@destroy');
+
