@@ -7,10 +7,10 @@
   <body>
     <form name="form" method="POST" action="{{ url('/login') }}">
     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-      Account:<br>
+      Account :<br>
       <input type="text" name="firstname">
       <br>
-      Password:<br>
+      Password :<br>
       <input type="text" name="lastname">
       <br><br>
       <input type="submit" value="Submit">
