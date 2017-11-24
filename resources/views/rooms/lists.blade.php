@@ -1,33 +1,31 @@
 @extends('app')
 @section('content')
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Room ID</th>
-            <th scope="col">Room Name</th>
-            <th scope="col">Owner</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <th scope="row">1</th>
-            <td>1</td>
-            <td>Room1</td>
-            <td>Ben</td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>2</td>
-            <td>Room2</td>
-            <td>Jack</td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td>3</td>
-            <td>Room3</td>
-            <td>Queenie</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="{{ URL('rooms/room/create') }}" class="btn btn-default">Create<a>
+                        <a href="{{ URL('rooms/join') }}" class="btn btn-primary">Join To</a>
+                    </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <tr class="row">
+                                    <th class="col-lg-4">Room ID</th>
+                                    <th class="col-lg-2">Name</th>
+                                    <th class="col-lg-4">Owner</th>
+                                </tr>
+                                @foreach($rooms as $room)
+                                <tr class="row">
+                                    <td class="col-lg-4">{{$room->id}}</td>
+                                    <td class="col-lg-2">{{$room->name}}</td>
+                                    <td class="col-lg-4">{{$room->owner_id}}</td>
+                                </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
