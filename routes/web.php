@@ -12,7 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
 
 Route::get('/room', 'RoomController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+// Route::get('/login',array('as' => 'login', 'user' => 'LoginController@index'));
+// Route::post('login','LoginController@index');
+// Route::get('logout','LoginController@logout');
