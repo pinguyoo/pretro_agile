@@ -41,3 +41,10 @@ Route::get('/messages', 'MessageController@index');
 Route::post('/message', 'MessageController@store');
 Route::delete('/message/{message}', 'MessageController@destroy');
 
+
+Route::get('/room', 'RoomController@index');
+
+Route::get('/new-comment', 'NewCommentController@index');
+Route::post('/new-comment', 'NewCommentController@newComment');
+Route::delete('/new-comment/{id}', 'NewCommentController@delete');
+
