@@ -14,5 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+ 
 Route::get('/room', 'RoomController@index');
+Route::get('/login', 'LoginController@index');
+Route::post('/login', 'LoginController@store');
+
