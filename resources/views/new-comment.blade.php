@@ -25,38 +25,6 @@
 
 </div>
 
-  <!-- <div class="col">
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Type</th>
-            <th scope="col">Content</th>
-            <th scope="col">Created_at</th>
-            <th scope="col">Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-          @foreach ($comment as $key=>$info)
-          <tr>
-            <th scope="row">{{ $key+1 }}</th>
-            <td>{{ $info->type}}</td>
-            <td contenteditable='true'>{{ $info->content}}</td>
-            <td>{{ $info->created_at}}</td>
-            <td>
-              <form class="" action="/new-comment/{{ $info->id }}" method="post">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-                <Button type="submit" name="remove" class="btn btn-danger">Remove</Button>
-              </form>
-            </td>
-          </tr>
-          @endforeach
-
-        </tbody>
-    </table>
-  </div> -->
-
 @endif
 
   <div class="col">

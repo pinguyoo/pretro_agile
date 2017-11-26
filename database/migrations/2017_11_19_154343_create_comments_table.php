@@ -15,7 +15,9 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('room_id');
             $table->string('user_id');
+            $table->boolean('public');
             $table->string('type');
             $table->string('content');
             $table->rememberToken();

@@ -16,13 +16,12 @@ class NewCommentController extends Controller
 
     public function newComment(Request $request) {
 
-      // $comment_model = new Comment();
-      // $comment_model->saveComment($request);
-
       date_default_timezone_set("Asia/Taipei");
 
       $comment = new Comment;
       $comment->user_id = 1;
+      $comment->room_id = 0000;
+      $comment->public = false;
       $comment->type = $request->input('commentType');
       $comment->content = $request->input('commentContent');
       $comment->remember_token = $request->input('_token');
