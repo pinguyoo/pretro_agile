@@ -30,7 +30,7 @@ Route::group(['prefix' => 'rooms', 'namespace' => 'Room', 'middleware' => 'auth'
     Route::post('/join', 'MainController@join');
     Route::resource('room', 'RoomController');
 });
- 
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -48,3 +48,4 @@ Route::get('/new-comment', 'NewCommentController@index');
 Route::post('/new-comment', 'NewCommentController@newComment');
 Route::delete('/new-comment/{id}', 'NewCommentController@delete');
 
+Route::get('/timer', 'TimerController@index');

@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Pretro</title>
 
-    <link href="/css/app.css" rel="stylesheet">    
+    <link href="/css/app.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -27,7 +27,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                       
+
                     </a>
                 </div>
 
@@ -69,15 +69,58 @@
             </div>
         </nav>
 
-        
+
             @yield('content')
             <div id="footer" style="text-align: center; border-top: dashed 3px #eeeeee; margin: 50px 0; padding: 20px;">
                 @Agile
             </div>
-        
+
     </div>
 
     <!-- Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript">
+
+      $( document ).ready(function() {
+
+        let min, sec;
+        let counting;
+
+        $('.timerBox :input[name="time"]').click(function() {
+           clearInterval(counting);
+           min = $(this).val();
+           sec = 00;
+           $('.timer').html(min + " : " + "00");
+        })
+
+        $('.timerBox :input[name="start"]').click(function() {
+           clearInterval(counting);
+           counting = setInterval(function() {
+             if (sec == 00 && min !== 0) {
+               min--;
+               sec = 60;
+               $('.timer').html(min + " : " + sec);
+             }
+             sec--;
+             $('.timer').html(min + " : " + sec);
+             if (min == 0 && sec == 0) {
+               clearInterval(counting);
+             }
+           }, 1000);
+        })
+
+        $('.timerBox :input[name="stop"]').click(function() {
+            clearInterval(counting);
+        })
+
+
+      });
+
+    </script>
 </body>
-</html> 
+</html>
